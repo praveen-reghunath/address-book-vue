@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "firstName": "Emmet Cole",
+        "lastName": "Crist"
+    },
+    {
+        "id": 2,
+        "firstName": "Hermina Harris",
+        "lastName": "Fisher"
+    },
+    {
+        "id": 3,
+        "firstName": "Lisa Macejkovic",
+        "lastName": "Kemmer"
+    },
+    {
+        "id": 4,
+        "firstName": "Kaia Lemke",
+        "lastName": "Rosenbaum"
+    },
+    {
+        "id": 5,
+        "firstName": "Norval Abernathy",
+        "lastName": "Lynch"
+    }
+]

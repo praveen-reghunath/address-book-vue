@@ -1,0 +1,35 @@
+{
+    "id": 1,
+    "firstName": "Emmet Cole",
+    "lastName": "Crist",
+    "addresses": [
+        {
+            "id": 1,
+            "addressType": "1",
+            "street": "5456 Lueilwitz Overpass",
+            "city": "South Lillie",
+            "state": "Oregon",
+            "postalCode": "7124"
+        },
+        {
+            "id": 2,
+            "addressType": "2",
+            "street": "045 Kerluke Villages",
+            "city": "Cummingston",
+            "state": "Wisconsin",
+            "postalCode": "38570"
+        }
+    ],
+    "phones": [
+        {
+            "id": 1,
+            "phoneType": "1",
+            "phoneNumber": "415-555-1212"
+        },
+        {
+            "id": 2,
+            "phoneType": "2",
+            "phoneNumber": "415-657-7682"
+        }
+    ]
+}
