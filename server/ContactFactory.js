@@ -1,5 +1,6 @@
 import express from 'express';
-import faker from 'faker';
+// import faker from 'faker';
+import { faker } from '@faker-js/faker';
 
 import { URL } from '../src/constants/index';
 
@@ -9,14 +10,15 @@ const PHONE_TYPES = require('./data/phoneTypes.json');
 const router = express.Router();
 
 function getRandomType(types) {
-    const type = faker.helpers.randomize(types);
+    const index = faker.number.int({min:0, max: types.length -1 })
+    const type = types[index];
     return type;
 }
 
 function getPhone(id, phoneType, phoneNumber) {
-    faker.locale = "en";
+    // faker.locale = "en";
     phoneType = phoneType || getRandomType(PHONE_TYPES);
-    phoneNumber = phoneNumber || faker.phone.phoneNumber('(###) ###-####');
+    phoneNumber = phoneNumber || faker.phone.number();
     return {
         id,
         phoneType,
@@ -26,7 +28,7 @@ function getPhone(id, phoneType, phoneNumber) {
 
 function getPhones() {
     const result = [];
-    let count = faker.random.number({ min: 1, max: 3 });
+    let count = faker.number.int({ min: 1, max: 3 });
     for (let index = 1; index <= count; index++) {
         const phone = getPhone(index);
         result.push(phone);
@@ -37,10 +39,10 @@ function getPhones() {
 
 function getAddress(id, addressType, street, city, state, postalCode) {
     addressType = addressType || getRandomType(ADDRESS_TYPES);
-    street = street || faker.address.streetName();
-    city = city || faker.address.city();
-    state = state || faker.address.state();
-    postalCode = postalCode || faker.address.zipCode('#####');
+    street = street || faker.location.streetAddress(true);
+    city = city || faker.location.city();
+    state = state || faker.location.state();
+    postalCode = postalCode || faker.location.zipCode('#####');
 
     return {
         id,
@@ -54,7 +56,7 @@ function getAddress(id, addressType, street, city, state, postalCode) {
 
 function getAddresses() {
     const result = [];
-    let count = faker.random.number({ min: 1, max: 3 });
+    let count = faker.number.int({ min: 1, max: 3 });
     for (let index = 1; index <= count; index++) {
         const address = getAddress(index);
         result.push(address);
@@ -63,8 +65,8 @@ function getAddresses() {
 }
 
 function getContact(id, firstName, lastName) {
-    firstName = firstName || faker.name.firstName();
-    lastName = lastName || faker.name.lastName();
+    firstName = firstName || faker.person.firstName();
+    lastName = lastName || faker.person.lastName();
     return {
         id,
         firstName,
