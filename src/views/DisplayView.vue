@@ -1,7 +1,7 @@
 <template>
   <div class="display-view">
     <div class="actions">
-      <RouterLink :to="`/input/${contactId}`">Edit</RouterLink>
+      <RouterLink class="edit" :to="`/input/${contactId}`">Edit</RouterLink>
     </div>
     <div class=""></div>
   </div>
@@ -27,6 +27,11 @@ onBeforeRouteUpdate(async (to, from) => {
 
   .actions {
     padding: 1rem;
+  }
+
+  .edit {
+    float: right;
+    color: blue;
   }
 
 }
