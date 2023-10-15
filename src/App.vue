@@ -7,9 +7,16 @@
 </template>
 
 <script setup>
+import { onBeforeMount } from "vue";
 import { RouterLink, RouterView } from 'vue-router'
 import ContactList from "@/components/ContactList.vue";
+import { useContactStore } from "@/stores/contacts.js";
 
+const store = useContactStore();
+
+onBeforeMount(() => {
+  store.getContacts();
+});
 </script>
 
 <style lang="scss" scoped>

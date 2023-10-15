@@ -1,29 +1,21 @@
 <template>
     <div class="contact-list">
-        <ListItem v-for="item of list" :key="item.id" :data="item" @select="onItemSelect">
+        <ListItem v-for="item of contacts" :key="item.id" :data="item" @select="onItemSelect">
         </ListItem>
         <AddNewButton @click="onAddNewClick"></AddNewButton>
     </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import ListItem from "./ContactListItem.vue";
 import AddNewButton from "./ContactListAddNew.vue";
 import { useRouter, useRoute } from "vue-router";
+import { useContactStore } from "@/stores/contacts";
 
-const list = ref([
-    {
-        id: 1,
-        firstName: "Jane",
-        lastName: "Doe"
-    },
-    {
-        id: 2,
-        firstName: "Jane",
-        lastName: "Doe"
-    }
-]);
+const store = useContactStore();
+
+const contacts = computed(() => store.contacts);
 
 const router = useRouter();
 

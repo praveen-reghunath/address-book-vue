@@ -4,14 +4,17 @@
       <RouterLink class="edit" :to="`/input/${contactId}`">Edit</RouterLink>
     </div>
     <div class="view">
-      <DataRow label="Given Name">John</DataRow>
-      <DataRow label="Surname">Smith</DataRow>
-      <DataRow label="Home Phone">651-410-8490</DataRow>
-      <DataRow label="Home Phone">651-410-8490</DataRow>
-      <DataRow label="Home Address">
-        <div>38680 Hastings st, Apt 221</div>
-        <div>Fremont, CA 94536</div>
-      </DataRow>
+      <DataRow label="Given Name">{{ contact?.firstName }}</DataRow>
+      <DataRow label="Surname">{{ contact?.lastName }}</DataRow>
+      <div class="phones">
+        <DataRow v-for="phone of contact?.phones" :label="phone.phoneType">{{ phone.phoneNumber }}</DataRow>
+      </div>
+      <div class="address">
+        <DataRow v-for="address of contact?.addresses" :label="address.addressType">
+          <div>{{ address.street }}</div>
+          <div>{{ address.city }}, {{ address.state }} - {{ address.postalCode }}</div>
+        </DataRow>
+      </div>
     </div>
   </div>
 </template>
@@ -20,12 +23,17 @@
 import { computed } from "vue";
 import { useRouter, useRoute, RouterLink, onBeforeRouteUpdate } from "vue-router";
 import DataRow from "@/components/DataRow.vue";
+import { useContactStore } from "@/stores/contacts";
 
 const route = useRoute();
+const store = useContactStore();
+
 const contactId = computed(() => route.params.id);
+const contact = computed(() => store.contactDetails);
 
 onBeforeRouteUpdate(async (to, from) => {
-  console.log(to.params.id);
+  await store.getContactDetails(to.params.id);
+  console.log(store.contactDetails);
 });
 </script>
 

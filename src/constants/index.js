@@ -1,11 +1,11 @@
-const CONTACTS = '/contacts';
-const CONTACT_DETAILS = '/contacts/:contactId';
-const ADDRESSES = '/contacts/:contactId/addresses';
-const ADDRESS_DETAILS = '/contacts/:contactId/addresses/:addressId';
-const PHONES = '/contacts/:contactId/phones';
-const PHONE_DETAILS = '/contacts/:contactId/phones/:phoneId';
-const ADDRESS_TYPES = '/addressTypes';
-const PHONE_TYPES = '/phoneTypes';
+const CONTACTS = '/api/contacts';
+const CONTACT_DETAILS = '/api/contacts/:contactId';
+const ADDRESSES = '/api/contacts/:contactId/addresses';
+const ADDRESS_DETAILS = '/api/contacts/:contactId/addresses/:addressId';
+const PHONES = '/api/contacts/:contactId/phones';
+const PHONE_DETAILS = '/api/contacts/:contactId/phones/:phoneId';
+const ADDRESS_TYPES = '/api/addressTypes';
+const PHONE_TYPES = '/api/phoneTypes';
 
 export const URL = Object.freeze({
     CONTACTS,
