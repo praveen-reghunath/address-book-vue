@@ -4,29 +4,14 @@
       <RouterLink class="edit" :to="`/input/${contactId}`">Edit</RouterLink>
     </div>
     <div class="view">
-      <div class="row">
-        <label for="" class="label">Given Name</label>
-        <div>John</div>
-      </div>
-      <div class="row">
-        <label for="" class="label">Surname</label>
-        <div>Smith</div>
-      </div>
-      <div class="row">
-        <label for="" class="label">Home Phone</label>
-        <div>651-410-8490</div>
-      </div>
-      <div class="row">
-        <label for="" class="label">Home Phone</label>
-        <div>651-410-8490</div>
-      </div>
-      <div class="row">
-        <label for="" class="label">Home Address</label>
-        <div>
-          <div>38680 Hastings st, Apt 221</div>
-          <div>Fremont, CA 94536</div>
-        </div>
-      </div>
+      <DataRow label="Given Name">John</DataRow>
+      <DataRow label="Surname">Smith</DataRow>
+      <DataRow label="Home Phone">651-410-8490</DataRow>
+      <DataRow label="Home Phone">651-410-8490</DataRow>
+      <DataRow label="Home Address">
+        <div>38680 Hastings st, Apt 221</div>
+        <div>Fremont, CA 94536</div>
+      </DataRow>
     </div>
   </div>
 </template>
@@ -34,6 +19,7 @@
 <script setup>
 import { computed } from "vue";
 import { useRouter, useRoute, RouterLink, onBeforeRouteUpdate } from "vue-router";
+import DataRow from "@/components/DataRow.vue";
 
 const route = useRoute();
 const contactId = computed(() => route.params.id);
